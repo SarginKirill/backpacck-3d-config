@@ -2,6 +2,7 @@ import { useGLTF } from '@react-three/drei';
 import { useContext } from 'react';
 import { Config } from '../../utils/Context';
 import { useMineTexture } from '../../hooks/useMineTexture';
+import * as THREE from 'three';
 
 export const BackPack = () => {
   const { scene, nodes } = useGLTF('/backpacck-3d-config/assets/backpack.glb');
@@ -10,16 +11,16 @@ export const BackPack = () => {
 
   const { body, metall, strap } = useMineTexture(bodyColor, metallColor);
 
-  if (nodes.Mesh) {
+  if (nodes.Mesh && nodes.Mesh instanceof THREE.Mesh) {
     nodes.Mesh.material = body[material];
     nodes.Mesh.material.needsUpdate = true;
   }
 
-  if (nodes.Mesh_1) {
+  if (nodes.Mesh_1 && nodes.Mesh_1 instanceof THREE.Mesh) {
     nodes.Mesh_1.material = metall;
     nodes.Mesh_1.material.needsUpdate = true;
   }
-  if (nodes.Mesh_2) {
+  if (nodes.Mesh_2 && nodes.Mesh_2 instanceof THREE.Mesh) {
     nodes.Mesh_2.material = strap;
     nodes.Mesh_2.material.needsUpdate = true;
   }
