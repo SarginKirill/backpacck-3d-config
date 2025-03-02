@@ -5,7 +5,7 @@ import { OrbitControls } from '@react-three/drei';
 export const Environment: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Canvas>
-      <OrbitControls />
+      <OrbitControls maxDistance={15} minDistance={4} />
 
       <ambientLight intensity={1} />
 
